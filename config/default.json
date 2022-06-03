@@ -1,6 +1,13 @@
 {
+  "Lobster-Project": {
     "server": {
-        "host": "localhost",
-        "port": "443"
+      "host": "localhost",
+      "port": "443"
+    },
+    "dbConfig": {
+      "host": "localhost",
+      "port": 5984,
+      "dbName": "mongodb+srv://rktoni:VxFdt7lUc4qTXAyQ@lobstercluster.wiwr8zs.mongodb.net/?retryWrites=true&w=majority"
     }
+  }
 }
