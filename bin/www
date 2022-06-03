@@ -15,7 +15,7 @@ const { config } = require('process');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || configEnv.get('server.port'));
+var port = normalizePort(process.env.PORT || configEnv.get('Lobster-Project.server.port'));
 app.set('port', port);
 
 /**
