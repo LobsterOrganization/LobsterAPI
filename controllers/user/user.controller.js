@@ -14,7 +14,6 @@ var controller = {
       next(err);
     }
   },
-
   registration: async (req, res, next) => {
     try {
       const { userFirstName, userLastName, userEmail, userPassword } = req.body;
@@ -49,7 +48,6 @@ var controller = {
       next(err);
     }
   },
-
   login: async (req, res, next) => {
     try {
       User.findOne({ userEmail: req.body.userEmail }).then((user) => {
@@ -71,29 +69,6 @@ var controller = {
       });
     } catch (err) {
       console.error(err);
-      next(err);
-    }
-  },
-
-  /**
-   * Get all users
-   */
-  getUsers: async (req, res, next) => {
-    try {
-      let users = await User.find({});
-      res.json(users);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  },
-
-  addOne: async (req, res, next) => {
-    try {
-      let user = await User.create(req.body);
-      res.json(user);
-    } catch (err) {
-      console.err(err);
       next(err);
     }
   },

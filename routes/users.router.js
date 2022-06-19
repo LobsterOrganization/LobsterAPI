@@ -17,10 +17,10 @@ var corsOptions = {
 var userController = require("../controllers/user/user.controller");
 
 /* GET users listing. */
-router.get("/users", cors(corsOptions), userController.getUsers);
+//router.get("/users", cors(corsOptions), userController.getUsers);
 
 /* POST users listing. */
-router.post("/user", userController.addOne);
+//router.post("/user", userController.addOne);
 router.post('/register', userController.registration);
 router.post('/login', userController.login);
 
