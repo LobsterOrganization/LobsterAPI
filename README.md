@@ -2,14 +2,18 @@
 
 ## But du projet
 
-**Statut** : développement en cours depuis mai 2022.*
+**Statut** : développement en cours depuis mai 2022.
 
 
-### Architecture du projet (description des fonctionnalités pages)
+### Description des fonctionnalités / pages
 LOBSTER est un site internet avec 1 page d'accueil où nous avons 1 dashboard composé de plusieurs graphes :
 * 1 Graphe principal qui est le graphe le plus important du site. Il s'agit de la cartographie des acteurs importants concernant 1 mot donné (par exemple "hydrogène"), nous aurions donc "Air Liquide", etc. avec leurs couleurs (ce qu'ils en pensent -> en l'occurrence ils sont pour) et les liaisons entre ces acteurs : clusters d'acteurs/groupes.
 * Plusieurs autres graphes : il y aura d'autres analyses du mot choisi (nous ferons le choix de tel ou tel graphe en fonction de ce qui est intéressant à analyser. On choisira par exemple un chart pie pour représenter une part de marché plutôt qu'un chart line -> ça ne serait pas cohérent).
 * Enfin, des recherches sur le mot choisi sur le graphe en lui-même est éventuellement possible, à creuser via notre module Sigma.JS.
+
+
+### FAIRE ACHITECTURE
+...
 
 
 ### Technologies
@@ -148,11 +152,11 @@ Il faut donc créer un répertoire *config* qui contient un seul fichier *defaul
   "Lobster-Project": {
     "server": {
       "host": "localhost",
-      "port": "xxxx"
+      "port": "443"
     },
     "dbConfig": {
       "host": "localhost",
-      "port": xxxx,
+      "port": 5984,
       "dbName": "xxxx"
     }
   }
@@ -163,7 +167,7 @@ Il faut donc créer un répertoire *config* qui contient un seul fichier *defaul
 ```
 npm start
 ```
-* Puis à se rendre sur **https://localhost:443** depuis un navigateur.
+* Puis à se rendre sur **https://localhost:3000** depuis un navigateur.
 
 
 ### DockerFile
