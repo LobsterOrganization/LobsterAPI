@@ -21,5 +21,7 @@ router.get("/users", cors(corsOptions), userController.getUsers);
 
 /* POST users listing. */
 router.post("/user", userController.addOne);
+router.post('/register', userController.registration);
+router.post('/login', userController.login);
 
 module.exports = router;
