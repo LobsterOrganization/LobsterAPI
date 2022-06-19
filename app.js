@@ -9,8 +9,6 @@ var logger = require("morgan");
 var helmet = require("helmet");
 var helmetCsp = require("helmet-csp");
 
-var cors = require("cors");
-
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
 var nodesRouter = require("./routes/nodes.router");
@@ -61,12 +59,6 @@ app.use(
     reportOnly: false, // Envoi un rapport
   })
 );
-
-// Cors
-app.use(
-  cors()
-);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
