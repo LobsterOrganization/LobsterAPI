@@ -23,7 +23,7 @@ var userController = {
       console.err(err);
       next(err);
     }
-  },
+  }
 };
 
 module.exports = userController;

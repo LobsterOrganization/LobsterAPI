@@ -13,6 +13,7 @@ var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
+var nodesRouter = require("./routes/nodes.router");
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/", usersRouter);
+app.use("/", nodesRouter);
 
 // Style directory
 app.use(
