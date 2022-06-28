@@ -1,27 +1,35 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 // Set Cors
 var cors = require("cors");
-var whitelist = ['http://localhost:3000'];
+var whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3000/login",
+  "http://localhost:443",
+];
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
+      callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'))
+      callback(new Error("Not allowed by CORS"));
     }
-  }
-}
+  },
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
 var userController = require("../controllers/user/user.controller");
 
 /* GET users listing. */
-//router.get("/users", cors(corsOptions), userController.getUsers);
+router.get("/users", cors(corsOptions), userController.getUsers);
+router.get("/user/:id", userController.getUser);
+router.get("/logout", cors(corsOptions), userController.logout);
 
 /* POST users listing. */
-//router.post("/user", userController.addOne);
-router.post('/register', userController.registration);
-router.post('/login', userController.login);
+router.post("/register", cors(corsOptions), userController.registration);
+router.post("/login", cors(corsOptions), userController.login);
 
 module.exports = router;

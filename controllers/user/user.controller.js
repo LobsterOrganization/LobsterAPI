@@ -1,19 +1,15 @@
 const User = require("../../models/user.model");
+const ObjectID = require("mongoose").Types.ObjectId;
+
 const jwt = require("jsonwebtoken");
 const { hashSync, compareSync } = require("bcrypt");
 const config = require("config");
-const privateKey = config.get("privateKey");
+const privateKey = config.get("Lobster-Project.jwt.privateKey");
 
 var controller = {
-  getAll: async (req, res, next) => {
-    try {
-      let users = await User.find({});
-      res.json(users);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  },
+  /**
+   * Registration function
+   */
   registration: async (req, res, next) => {
     try {
       const { userFirstName, userLastName, userEmail, userPassword } = req.body;
@@ -23,7 +19,6 @@ var controller = {
       } else if (userPassword.length < 8) {
         res.status(409).send("Password must be at least 8 characters");
       } else {
-        const users = await User.find({});
         User.findOne({ userEmail: userEmail }).then((user) => {
           if (!user) {
             let user = User.create({
@@ -48,14 +43,21 @@ var controller = {
       next(err);
     }
   },
+
+  /**
+   * Login function with jwt
+   */
   login: async (req, res, next) => {
     try {
-      User.findOne({ userEmail: req.body.userEmail }).then((user) => {
+      const { userEmail, userPassword } = req.body;
+
+      await User.findOne({ userEmail: req.body.userEmail }).then((user) => {
         if (!user) {
-          res.status(401).send("Login incorrect");
+          res.status(400).send("Login incorrect");
         }
+
         if (!compareSync(req.body.userPassword, user.userPassword)) {
-          res.status(401).send("Login incorrects");
+          res.status(400).send("Login incorrects");
         }
 
         const payload = {
@@ -65,8 +67,58 @@ var controller = {
 
         const token = jwt.sign(payload, privateKey, { expiresIn: "1d" });
 
-        res.send(token);
+        // Store token in cookie
+        const cookieExpiry = config.get("Lobster-Project.cookie.COOKIE_EXPIRY");
+        res.cookie("SessionToken", token, {
+          httpOnly: true,
+          domain : "/",
+          maxAge: cookieExpiry,
+          secure: true,
+        }).status(200).json({ user: user._id, name: user.userEmail });
       });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  },
+
+  /**
+   * Logout function
+   */
+  logout: async (req, res, next) => {
+    res.cookie("SessionToken", "", { maxAge: 1 });
+    res.redirect("/");
+  },
+
+  /**
+   * Get all users
+   */
+  getUsers: async (req, res, next) => {
+    try {
+      let users = await User.find().select("-userPassword");
+      res.json(users);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  },
+
+  /**
+   * Get user data
+   */
+  getUser: async (req, res, next) => {
+    try {
+      if (!ObjectID.isValid(req.params.id)) {
+        return res.status(400).send("ID unknow : " + req.params.id);
+      }
+
+      User.findById(req.params.id, (err, docs) => {
+        if (!err) {
+          res.send(docs);
+        } else {
+          console.log("ID unknown : " + err);
+        }
+      }).select("-userPassword");
     } catch (err) {
       console.error(err);
       next(err);
