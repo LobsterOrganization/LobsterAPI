@@ -1,21 +1,27 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 var nodeController = require("../controllers/node/node.controller");
 
 // Set Cors
 var cors = require("cors");
-var whitelist = ['http://localhost:3000'];
+var whitelist = [
+  "http://localhost:3000",
+  "http://localhost:3000/login",
+  "http://localhost:443",
+];
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
+      callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'))
+      callback(new Error("Not allowed by CORS"));
     }
-  }
-}
-
+  },
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
 
 /* GET nodes listing. */
 router.get("/nodes", cors(corsOptions), nodeController.getNodes);
@@ -24,4 +30,3 @@ router.get("/nodes", cors(corsOptions), nodeController.getNodes);
 router.post("/node", nodeController.addOne);
 
 module.exports = router;
-
