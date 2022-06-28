@@ -12,6 +12,7 @@ var helmetCsp = require("helmet-csp");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
 var nodesRouter = require("./routes/nodes.router");
+var trendsRouter = require("./routes/trends.router");
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", nodesRouter);
+app.use("/", trendsRouter);
 
 // Style directory
 app.use(
