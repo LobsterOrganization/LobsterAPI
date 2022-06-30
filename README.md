@@ -18,14 +18,15 @@ LOBSTER est un site internet avec 1 page d'accueil où nous avons 1 dashboard co
 ```mermaid
 graph TD;
 subgraph Scraping
-A[LobsterTwitterScraping]-->|data| B(Twitter)
+A[LobsterTwitterScraping]-->|Get-data| B(Twitter)
 end
 subgraph Back
 A ----> |CRUD| C{MongoDB}
 D[LobsterAPI] --> |Read-sauf-data-user=CRUD| C
 end
 subgraph Front
-D ----> |Send-data| E[Lobsterfrontend]
+D ---> |Send-data| E[Lobsterfrontend]
+E ---> |Send-data| D
 end
 ```
 
