@@ -1,5 +1,6 @@
 # LobsterAPI
 
+
 ## But du projet
 
 **Statut** : développement en cours depuis mai 2022.
@@ -12,9 +13,21 @@ LOBSTER est un site internet avec 1 page d'accueil où nous avons 1 dashboard co
 * Enfin, des recherches sur le mot choisi sur le graphe en lui-même est éventuellement possible, à creuser via notre module Sigma.JS.
 
 
-### FAIRE ACHITECTURE
-...
+### ACHITECTURE DU PROJET LOBSTER
 
+```mermaid
+graph TD;
+subgraph Scraping
+A[LobsterTwitterScraping]-->|data| B(Twitter)
+end
+subgraph Back
+A ----> |CRUD| C{MongoDB}
+D[LobsterAPI] --> |Read-sauf-data-user=CRUD| C
+end
+subgraph Front
+D ----> |Send-data| E[Lobsterfrontend]
+end
+```
 
 ### Technologies
 **Backend**
@@ -34,6 +47,7 @@ LOBSTER est un site internet avec 1 page d'accueil où nous avons 1 dashboard co
 ### Evolutions possibles
 1. L'analyse sémantique des mots
 
+****
 
 ## Equipe & rôles
 
@@ -63,6 +77,8 @@ L'ensemble de la documentation listée ci-dessous se trouve ici notamment la doc
 ## Communication au sein de notre équipe
 
 Utilisation du [serveur Discord PPD - M1 MIAGE](https://discord.gg/69Wfxqfgmh).
+
+****
 
 ## Documentation
 
