@@ -20,13 +20,15 @@ graph TD;
 subgraph Scraping
 A[LobsterTwitterScraping]-->|Get-data| B(Twitter)
 end
+subgraph Database
+A ---> |CRUD| C{MongoDB}
+end
 subgraph Back
-A ----> |CRUD| C{MongoDB}
 D[LobsterAPI] --> |Read-sauf-data-user=CRUD| C
 end
 subgraph Front
-D ---> |Send-data| E[Lobsterfrontend]
-E ---> |Send-data| D
+D --> |Send-data| E[Lobsterfrontend]
+E --> |Send-data| D
 end
 ```
 
