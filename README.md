@@ -56,21 +56,14 @@ end
 
 Notre équipe est composée de 2 équipes :
 
-**FORMATION INITIALE**
-1. **AKTURK Hacer** - M1 MIAGE FI
-1. **BENDOU Kenza** - M1 MIAGE FI
-1. **IMAZATENE Thanina** - M1 MIAGE FI
-1. **OULTACHE Yougourthen** - M1 MIAGE FI
-1. **THY Billy** - M1 MIAGE FI
 
 **FORMATION EN ALTERNANCE**
-1. **DJEBBARA Kahina** - M1 MIAGE FA
-1. **MAHOLIDA Christelle** - M1 MIAGE FA
-1. **MARECAR Sarah** - M1 MIAGE FA
-1. **RAKOTONIRINA Onitiana** - M1 MIAGE FA
-1. **TANG François** - M1 MIAGE FA
-1. **YANES Abdellah** - M1 MIAGE FA
-
+1. **MARECAR Sarah** - M2 MIAGE FA
+1. **RAKOTONIRINA Onitiana** - M2 MIAGE FA
+1. **TANG François** - M2 MIAGE FA
+1. **FELLAH Mohamed** - M2 MIAGE FA
+1. **BAN Régis** - M2 MIAGE FA
+1. **DJEBBARA Kahina** - M2 MIAGE FA
 
 ## Documentation
 
