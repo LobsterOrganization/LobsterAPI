@@ -43,7 +43,7 @@ end
 * Chart.js
 
 **Scrapping**
-* Tweepy.py
+* Nitter.py
 * Django.py
 
 
@@ -58,12 +58,14 @@ Notre équipe est composée de 2 équipes :
 
 
 **FORMATION EN ALTERNANCE**
-1. **MARECAR Sarah** - M2 MIAGE FA
-1. **RAKOTONIRINA Onitiana** - M2 MIAGE FA
-1. **TANG François** - M2 MIAGE FA
+
 1. **FELLAH Mohamed** - M2 MIAGE FA
 1. **BAN Régis** - M2 MIAGE FA
 1. **DJEBBARA Kahina** - M2 MIAGE FA
+1. **MARECAR Sarah** - M2 MIAGE FA
+1. **RAKOTONIRINA Onitiana** - M2 MIAGE FA
+1. **TANG François** - M2 MIAGE FA
+
 
 ## Documentation
 
