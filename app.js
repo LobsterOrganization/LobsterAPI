@@ -13,6 +13,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
 var nodesRouter = require("./routes/nodes.router");
 var trendsRouter = require("./routes/trends.router");
+var sentimentRouter = require("./routes/sentiments.router");
+var themeRouter = require("./routes/themes.router");
 
 var app = express();
 
@@ -30,6 +32,8 @@ app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", nodesRouter);
 app.use("/", trendsRouter);
+app.use("/", sentimentRouter);
+app.use("/", themeRouter);
 
 // Style directory
 app.use(
