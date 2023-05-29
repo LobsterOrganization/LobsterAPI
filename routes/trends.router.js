@@ -24,7 +24,7 @@ var corsOptions = {
 };
 
 /* GET nodes listing. */
-router.get("/trends", cors(corsOptions), trendController.getTrends);
+router.get("/trends", trendController.getTrends);
 
 /* POST nodes listing. */
 router.post("/trend", trendController.addOne);
