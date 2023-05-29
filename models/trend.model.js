@@ -3,20 +3,16 @@ const Schema = mongoose.Schema;
 
 const trendSchema = new Schema(
   {
-    word: {
+    mots: {
       type: String,
-      required: true,
-    },
-    enrollment: {
-      type: Number,
       required: true,
     }
   },
   {
-    collection: "Trends",
+    collection: "FreqOcc",
     timestamps: true,
   }
 );
 
-const Node = mongoose.model("Trends", trendSchema);
-module.exports = Node;
+const Trend = mongoose.model("Trend", trendSchema);
+module.exports = Trend;

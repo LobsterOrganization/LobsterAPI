@@ -1,17 +1,17 @@
-const Trend = require("../../models/trend.model");
+const Theme = require("../../models/theme.model");
 const config = require("config");
 
-var trendController = {
+var themeController = {
   /**
    * Get all trends
    */
-  getTrends: async (req, res, next) => {
+  getTheme: async (req, res, next) => {
     try {
       
-      let trends = await Trend.find({}).lean().exec();
+      let trends = await Theme.find({}).lean().exec();
       const allResults = [].concat(trends);
-      const jsonData = JSON.stringify(allResults.map(item => ({ _id: item._id, mots: item.mots, freq: item.freq })));
-      console.log("Saarh", jsonData)
+      const jsonData = JSON.stringify(allResults.map(item => ({ _id: item._id, Thème: item.Thème, Count: item.Count })));
+      console.log("THEME", jsonData)
       return res.send(jsonData);
   } catch (err) {
       console.log(err);
@@ -21,10 +21,13 @@ var trendController = {
 
   /**
    * Add trend
+   * 
    */
+
+
   addOne: async (req, res, next) => {
     try {
-      let trend = await Trend.create(req.body);
+      let trend = await Sentiment.create(req.body);
       return res.json(trend);
     } catch (err) {
       console.err(err);
@@ -34,4 +37,4 @@ var trendController = {
 };
 
 
-module.exports = trendController;
+module.exports = themeController;

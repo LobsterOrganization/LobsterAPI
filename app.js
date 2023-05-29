@@ -14,10 +14,15 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
 var nodesRouter = require("./routes/nodes.router");
 var trendsRouter = require("./routes/trends.router");
+
+
+var sentimentRouter = require("./routes/sentiments.router");
+var themeRouter = require("./routes/themes.router");
 var tweetsRouter = require("./routes/tweets.router");
 var freqOccRouter = require("./routes/freqOcc.router");
 var polariteRouter = require("./routes/polarite.router");
 var sentimentCounterRouter = require("./routes/sentimentCounter.router");
+
 var app = express();
 
 // view engine setup
@@ -41,10 +46,15 @@ app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", nodesRouter);
 app.use("/", trendsRouter);
+
+app.use("/", sentimentRouter);
+app.use("/", themeRouter);
+
 app.use("/", tweetsRouter);
 app.use("/", freqOccRouter);
 app.use("/", polariteRouter);
 app.use("/", sentimentCounterRouter);
+
 
 // Style directory
 app.use(
