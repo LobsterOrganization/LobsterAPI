@@ -5,16 +5,23 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+var cors = require("cors")
 var helmet = require("helmet");
 var helmetCsp = require("helmet-csp");
+var bodyParser = require('body-parser');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users.router");
 var nodesRouter = require("./routes/nodes.router");
 var trendsRouter = require("./routes/trends.router");
+
+
 var sentimentRouter = require("./routes/sentiments.router");
 var themeRouter = require("./routes/themes.router");
+var tweetsRouter = require("./routes/tweets.router");
+var freqOccRouter = require("./routes/freqOcc.router");
+var polariteRouter = require("./routes/polarite.router");
+var sentimentCounterRouter = require("./routes/sentimentCounter.router");
 
 var app = express();
 
@@ -24,16 +31,30 @@ app.set("view engine", "ejs");
 
 app.use(logger("dev"));
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 app.use("/", indexRouter);
 app.use("/", usersRouter);
 app.use("/", nodesRouter);
 app.use("/", trendsRouter);
+
 app.use("/", sentimentRouter);
 app.use("/", themeRouter);
+
+app.use("/", tweetsRouter);
+app.use("/", freqOccRouter);
+app.use("/", polariteRouter);
+app.use("/", sentimentCounterRouter);
+
 
 // Style directory
 app.use(
@@ -65,7 +86,7 @@ app.use(
     reportOnly: false, // Envoi un rapport
   })
 );
-
+app.use(cors())
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
