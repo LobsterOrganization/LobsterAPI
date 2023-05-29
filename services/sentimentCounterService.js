@@ -1,5 +1,5 @@
 const SentimentCounter = require("../models/sentimentCounter.model");
-const moment = require("moment");
+//const moment = require("moment");
 
 exports.groupSentiments = async (req) => {
   const receivedDate = req.body.date;
